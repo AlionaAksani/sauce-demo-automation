@@ -4,7 +4,11 @@ class InventoryPage extends PageWithHeader {
     path = "inventory.html";
 
     open(){
-        return super.open(path);
+        return super.open(this.path);
+    }
+
+    get firstBtnAddToCart() {
+        return $('button[data-test^="add-to-cart"]:first-of-type')
     }
 }
 

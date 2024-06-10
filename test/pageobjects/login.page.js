@@ -48,6 +48,11 @@ class LoginPage extends Page {
     open () {
         return super.open('');
     }
+
+    async openAndLogin(username, password){
+        await this.open();
+        await this.login(username, password);
+    }
 }
 
 module.exports = new LoginPage();
