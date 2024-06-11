@@ -28,21 +28,23 @@ describe('Cart', () => {
     // })
 
     it('should decrease cart counter number when item deleted', async () => {
-         const badge = await InventoryPage.cartBadge;
+         const badge = InventoryPage.cartBadge;
          await expect(badge).not.toExist();
 
-         await InventoryPage.btnsAddToCart[0].click()                // click on "Add to cart" button of the first item 
-         await InventoryPage.btnsAddToCart[1].click()                // click on "Add to cart" button of the second item
+         const firstBtn = InventoryPage.btnsAddToCart[0];   
+         await firstBtn.click()              
+         const secondBtn = InventoryPage.btnsAddToCart[1];
+         await secondBtn.click()
         
          const actualCountText = await badge.getText();
          const initialCartCount = Number.parseInt(actualCountText);
          await expect(initialCartCount).toBe(2);
-
-         await InventoryPage.btnsRemoveFromCart[0].click()
+         
+         const firstRemoveButton = InventoryPage.btnsRemoveFromCart[0];
+         await firstRemoveButton.click()
 
          const finalCountText = await badge.getText();
          const finalCartCount = Number.parseInt(finalCountText);
          await expect(finalCartCount).toBe(initialCartCount - 1);
-
      })
 })
