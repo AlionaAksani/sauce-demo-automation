@@ -25,7 +25,7 @@ describe('Logout', () => {
         await expect(await LoginPage.inputPassword.getValue()).toBeFalsy()
     })
 
-    it('should increase cart counter number when new item added', async () => {
+    it('should keep cart items number after logout', async () => {
         let initialCartCount = 0;
         const badge = await InventoryPage.cartBadge;
 
@@ -34,30 +34,14 @@ describe('Logout', () => {
             const cartCountText = await badge.getText();
             initialCartCount = Number.parseInt(cartCountText);
         }
-
-        await InventoryPage.firstBtnAddToCart.click()
+        
+        await InventoryPage.btnsAddToCart[0].click()
         
         const actualCountText = await badge.getText();
         const actualCount = Number.parseInt(actualCountText);
 
-        await expect(initialCartCount + 1).toBe(actualCount)
-    })
+        await expect(initialCartCount + 1).toBe(actualCount);
 
-    // it('should decrease cart counter number when item deleted', async () => {
-    //     let initialCartCount = 0;
-    //     const badge = await InventoryPage.cartBadge;
-
-    //     if (await badge.isExisting())
-    //     {  
-    //         const cartCountText = await badge.getText();
-    //         initialCartCount = Number.parseInt(cartCountText);
-    //     }
-
-    //     const firstBtnToCart = InventoryPage.firstBtnAddToCart;
         
-    //     const actualCountText = await badge.getText();
-    //     const actualCount = Number.parseInt(actualCountText);
-
-    //     await expect(initialCartCount + 1).toBe(actualCount)
-    // })
+    })
 })

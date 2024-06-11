@@ -7,8 +7,12 @@ class InventoryPage extends PageWithHeader {
         return super.open(this.path);
     }
 
-    get firstBtnAddToCart() {
-        return $('button[data-test^="add-to-cart"]:first-of-type')
+    get btnsAddToCart() {
+        return $$('button[data-test^="add-to-cart"]')
+    }
+
+    get btnsRemoveFromCart() {
+        return $$('button[data-test^="remove"]')
     }
 }
 
