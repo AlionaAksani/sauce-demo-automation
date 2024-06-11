@@ -13,6 +13,8 @@
     "@wdio/local-runner": "^8.38.2",
     "@wdio/mocha-framework": "^8.38.2",
     "@wdio/spec-reporter": "^8.38.2",
+    "eslint": "^9.4.0",
+    "eslint-plugin-wdio": "^8.37.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
